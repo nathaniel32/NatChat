@@ -1,0 +1,47 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+@{
+    ViewData["auth"] = Request.Cookies["cookie_auth"];
+}
+@{
+    ViewData["FlashMessage"] = Model.Status_A;
+}
+
+
+@if(Request.Cookies["cookie_auth"]?.ToString() != null){
+    <div>
+        <h1>@ViewData["Title"]</h1>
+        <br>
+        <strong> Hi </strong> <code>@Request.Cookies["cookie_fname"]</code>
+        <br>
+        @if(@Request.Cookies["cookie_room"]?.ToString() != null)
+        {
+            <strong> Last Room:</strong> <code>@Request.Cookies["cookie_room"]</code>
+        }
+    </div>
+}
+else{
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 350px;">
+        <h1>WELCOME TO NATCHAT</h1>
+        <br>
+        <div>
+            <button style="width: 90px;">
+                <a style="text-decoration: none;" asp-area="" asp-page="/authentication/addLogin">Login</a>
+            </button>
+            <button style="width: 90px;">
+                <a style="text-decoration: none;" asp-area="" asp-page="/authentication/addSignUp">Sign Up</a>
+            </button>
+        </div>
+    </div>
+
+}
+
+<input type="hidden" id="sendButton" />
+
+
+
+
+

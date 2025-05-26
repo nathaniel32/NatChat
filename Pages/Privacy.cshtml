@@ -1,0 +1,14 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+@{
+    ViewData["auth"] = Request.Cookies["cookie_auth"];
+}
+<h1>@ViewData["Title"]</h1>
+<br>
+<p>Gunakan Email/Data Fake untuk menghindari pencurian data!.</p>
+<p>Verwenden Sie gefälschte E-Mails / Daten, um Daten Diebstahl zu vermeiden!</p>
+
+<input type="hidden" id="sendButton" />

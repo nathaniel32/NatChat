@@ -1,0 +1,59 @@
+@page
+@model chatModel
+@{
+    ViewData["Title"] = "Chat";
+}
+@{
+    ViewData["auth"] = Request.Cookies["cookie_auth"];
+}
+@{
+    ViewData["FlashMessage"] = Model.Status_A;
+}
+<h1>@ViewData["Title"]</h1>
+<br>
+
+    <div>
+        
+        <br>
+        <strong> Room:</strong> <h3><code>@Request.Cookies["cookie_room"]</code></h3>
+        <strong> Sender:</strong> <h3><code>@Request.Cookies["cookie_fname"]</code></h3>
+        <strong> Send To:</strong> <h3><code><b>ID:</b> @Model.uIDChat <br> <b>Name:</b>@Model.fnameChat @Model.lnameChat</code></h3>
+
+    </div>
+    <br>
+    <div class="container">
+
+        <div class="col-5"><input type="hidden" id="id1Input" value="@Request.Cookies["cookie_auth"]"/></div>
+
+        <div class="col-5"><input type="hidden" id="id2Input" value="@Model.uIDChat" /></div>
+        <h3>Message</h3>
+        <div class="row p-1">
+            <div class="col-1">-</div>
+            <div class="col-5"><textarea class="w-100" id="messageInput"></textarea></div>
+        </div>
+
+        <h3>Data</h3>
+        <div class="row p-1">
+            <div class="col-1">-</div>
+            <div class="col-5"><input type="file" class="w-100" id="dataInput" /></div>
+        </div>
+
+        <div class="col-5"><input type="hidden" id="dateInput" /></div>
+
+        <div class="row p-1">
+            <div class="col-6 text-end">
+                <input type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6">
+                <hr/>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+    </div>
+

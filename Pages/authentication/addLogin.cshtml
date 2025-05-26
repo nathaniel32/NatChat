@@ -1,0 +1,25 @@
+@page
+@model SignalRChat.addLoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    ViewData["auth"] = Request.Cookies["cookie_auth"];
+}
+@{
+    ViewData["FlashMessage"] = Model.Status_A;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<br>
+
+<form method="post">
+    <input type="text" asp-for="Login.email_login" placeholder="E-Mail"/>
+    <input type="password" asp-for="Login.password_login" placeholder="Password"/>
+    <button type="submit">Login</button>
+</form>
+<br>
+<a style="text-decoration: none; color:red; margin-left:10px" asp-area="" asp-page="/authentication/addSignUp"><b>Sign Up</b></a>
+
+<input type="hidden" id="sendButton" />
